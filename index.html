@@ -369,6 +369,24 @@
         color: var(--muted);
       }
 
+      .app-pair {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr;
+        gap: 0.85rem;
+        margin-top: 0.9rem;
+      }
+
+      .app-pair p {
+        margin: 0;
+      }
+
+      .app-link {
+        display: inline-block;
+        margin-bottom: 0.45rem;
+        font-weight: 650;
+        text-underline-offset: 0.18em;
+      }
+
       footer {
         padding: 2rem 0 2.4rem;
         color: var(--muted);
@@ -383,7 +401,8 @@
       @media (max-width: 800px) {
         .metrics,
         .works,
-        .scores {
+        .scores,
+        .app-pair {
           grid-template-columns: 1fr;
         }
 
@@ -540,7 +559,7 @@
             <h2 id="work-title">대표작</h2>
             <p class="section-copy">
               10번 논문은 결과가 가설과 달라도 표본의 수를 그대로 적었다.
-              13번 앱 자리는 예정일만 남겨 두었다.
+              13번 앱은 그 채점으로 생성된 코드를 확인한다.
             </p>
           </header>
           <div class="works">
@@ -567,16 +586,31 @@
                 </div>
               </div>
             </article>
-            <article class="work slot" aria-label="13번 앱 예정 자리">
-              <p class="work-kicker">13번 앱</p>
-              <h3>13번 앱 예정일: O월 O일</h3>
-              <p>이 자리는 비워 두었다. 앱 이름과 설명은 예정일이 정해진 뒤에 넣는다.</p>
+            <article class="work" aria-label="13번 앱">
+              <p class="work-kicker">13번 앱 · 2026년 11월 6일</p>
+              <h3>XSS 표시 방식 채점</h3>
+              <div class="app-pair">
+                <p class="result">
+                  웹 화면을 AI로 만드는 사람이 생성된 코드를 확인할 때, 이 앱이
+                  사용자 입력 텍스트가 innerHTML 같은 HTML 삽입으로 들어갔는지
+                  검사해 취약하면 1, 텍스트로만 표시되면 0을 보여 준다.
+                </p>
+                <p class="result">
+                  <a
+                    class="app-link"
+                    href="../AI와%20함께%20쓰는%20첫%20논문%20%E2%80%94%20가설에서%20결론까지/xss_prompt_generator/index.html"
+                    >앱 열기</a
+                  >
+                  이 컴퓨터에서는 위 링크로 연다. 폴더만 따로 받은 경우에는
+                  xss_prompt_generator의 index.html을 브라우저에서 연다.
+                </p>
+              </div>
             </article>
           </div>
         </section>
 
         <footer>
-          <p>박현우 · nabell · 소개는 2026년 4월 20일 장면까지, 대표작은 2026년 11월 5일 논문까지.</p>
+          <p>박현우 · nabell · 소개는 2026년 4월 20일 장면까지, 대표작은 2026년 11월 6일 앱까지.</p>
         </footer>
       </div>
     </main>
