@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="박현우의 구직용 포트폴리오. 2026년 3월 반려된 첫 과제부터 로그를 읽고 다시 제출한 기록, 13주 수치, 논문과 예정된 앱."
+    />
+    <title>박현우 — 로그의 마지막 문장부터 읽는 사람</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;650;700&amp;display=swap"
+    />
+    <style>
+      :root {
+        --bg: #f6f3ec;
+        --bg-elevated: #fffdf8;
+        --ink: #1b1a16;
+        --muted: #4a463f;
+        --line: rgba(27, 26, 22, 0.12);
+        --accent: #7a5c2e;
+        --accent-soft: rgba(122, 92, 46, 0.12);
+        --shadow: 0 0 0 1px var(--line);
+        --serif: "Noto Serif KR", "Times New Roman", serif;
+        --sans: "Pretendard Variable", Pretendard, "Segoe UI", sans-serif;
+        --max: 68rem;
+        --header-h: 3.4rem;
+        color-scheme: light;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: calc(var(--header-h) + 0.75rem);
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 1.0625rem;
+        line-height: 1.75;
+        letter-spacing: -0.011em;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .skip {
+        position: absolute;
+        left: 1rem;
+        top: 0.5rem;
+        transform: translateY(-140%);
+        background: var(--ink);
+        color: var(--bg);
+        padding: 0.45rem 0.75rem;
+        border-radius: 8px;
+        z-index: 20;
+      }
+
+      .skip:focus {
+        transform: none;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        height: var(--header-h);
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .header-inner,
+      .shell {
+        width: min(var(--max), calc(100% - 2rem));
+        margin-inline: auto;
+      }
+
+      .header-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        font-family: var(--serif);
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .nav {
+        display: flex;
+        gap: 1.1rem;
+        font-size: 0.92rem;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: var(--muted);
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        color: var(--ink);
+      }
+
+      main {
+        padding-bottom: 4.5rem;
+      }
+
+      .hero {
+        padding: 4.5rem 0 2.5rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.85rem;
+        color: var(--accent);
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(2.6rem, 7vw, 4.6rem);
+        font-weight: 650;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+      }
+
+      .oneline {
+        max-width: 38rem;
+        margin: 1.15rem 0 0;
+        font-family: var(--serif);
+        font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+        font-weight: 500;
+        line-height: 1.55;
+      }
+
+      .section {
+        padding: 2.4rem 0 0.5rem;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 0.35rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-index {
+        margin: 0;
+        color: var(--accent);
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+      }
+
+      h2 {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+        font-weight: 650;
+        letter-spacing: -0.03em;
+        line-height: 1.3;
+      }
+
+      .section-copy {
+        margin: 0;
+        max-width: 40rem;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      .story {
+        display: grid;
+        gap: 1.15rem;
+      }
+
+      .story article {
+        margin: 0;
+        padding: 1.15rem 1.2rem 1.2rem;
+        background: var(--bg-elevated);
+        box-shadow: var(--shadow);
+        border-radius: 16px;
+      }
+
+      .story p {
+        margin: 0;
+      }
+
+      .kicker {
+        margin: 0 0 0.45rem;
+        color: var(--accent);
+        font-family: var(--sans);
+        font-size: 0.78rem;
+        font-weight: 650;
+        letter-spacing: 0.04em;
+      }
+
+      .ability {
+        display: inline;
+        margin-left: 0.15rem;
+        padding: 0.05rem 0.35rem;
+        border-radius: 6px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.86em;
+        font-weight: 650;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+
+      .metric {
+        margin: 0;
+        padding: 1.15rem 1.1rem 1.2rem;
+        background: var(--bg-elevated);
+        box-shadow: var(--shadow);
+        border-radius: 16px;
+      }
+
+      .metric strong {
+        display: block;
+        font-family: var(--serif);
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 650;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+      }
+
+      .metric span,
+      .metric small {
+        display: block;
+      }
+
+      .metric span {
+        margin-top: 0.45rem;
+        font-weight: 650;
+      }
+
+      .metric small {
+        margin-top: 0.35rem;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.55;
+      }
+
+      .date {
+        white-space: nowrap;
+      }
+
+      .bridge {
+        margin: 0.95rem 0 0;
+        padding: 1rem 1.15rem;
+        border-left: 3px solid var(--accent);
+        color: var(--ink);
+        background: var(--accent-soft);
+        border-radius: 0 14px 14px 0;
+      }
+
+      .works {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr;
+        gap: 0.85rem;
+        align-items: stretch;
+      }
+
+      .work {
+        margin: 0;
+        padding: 1.25rem 1.2rem 1.3rem;
+        background: var(--bg-elevated);
+        box-shadow: var(--shadow);
+        border-radius: 16px;
+      }
+
+      .work p,
+      .work h3 {
+        margin: 0;
+      }
+
+      .work-kicker {
+        margin-bottom: 0.55rem;
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 650;
+        letter-spacing: 0.06em;
+      }
+
+      .work h3 {
+        font-family: var(--serif);
+        font-size: 1.28rem;
+        font-weight: 650;
+        line-height: 1.45;
+        letter-spacing: -0.02em;
+      }
+
+      .work .result {
+        margin-top: 0.9rem;
+        color: var(--muted);
+      }
+
+      .scores {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        margin-top: 1rem;
+      }
+
+      .scores div {
+        padding: 0.75rem 0.8rem;
+        border-radius: 12px;
+        background: var(--bg);
+      }
+
+      .scores b {
+        display: block;
+        font-family: var(--serif);
+        font-size: 1.45rem;
+        font-weight: 650;
+      }
+
+      .scores span {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .slot {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100%;
+        border: 1.5px dashed rgba(122, 92, 46, 0.55);
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .slot h3 {
+        margin-top: 1.5rem;
+        font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+      }
+
+      .slot p {
+        margin-top: 0.8rem;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 2rem 0 2.4rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 800px) {
+        .metrics,
+        .works,
+        .scores {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 2.8rem;
+        }
+
+        .nav {
+          gap: 0.75rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#story">본문으로 건너뛰기</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top">박현우</a>
+        <nav class="nav" aria-label="페이지 구역">
+          <a href="#story">소개</a>
+          <a href="#record">13주 기록</a>
+          <a href="#work">대표작</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="shell">
+        <section class="hero" aria-labelledby="name">
+          <p class="eyebrow">박현우 · nabell · 부산 IT 아카데미</p>
+          <h1 id="name">박현우</h1>
+          <p class="oneline">
+            로그의 마지막 문장부터 읽고, 함께 쓰는 기록을 지키며 다시 제출하는 사람
+          </p>
+        </section>
+
+        <section class="section" id="story" aria-labelledby="story-title">
+          <header class="section-head">
+            <p class="section-index">01</p>
+            <h2 id="story-title">소개</h2>
+            <p class="section-copy">
+              2026년 3월 2일 입과부터 4월 20일까지의 기록입니다. 장면은 그날의
+              제출, 로그, 저장소에 남은 일을 기준으로 적었습니다.
+            </p>
+          </header>
+          <div class="story">
+            <article>
+              <h3 class="kicker">고난 · 1장</h3>
+              <p>
+              2026년 3월 23일 아침, 서면역 2번 출구에서 첫 과제 반려 메일을
+              읽었다. 3월 2일 월요일, 부산 IT 아카데미 3층 1강의실에 입과했고
+              명찰의 핸들은 nabell이었다. 오후 실습에서 터미널에 node -v를
+              넣으면 런타임을 찾지 못한다는 문장만 돌아왔다. 설치를 반복하고
+              경로를 다시 체크해도 같은 거절이 남았고, 전포동에서는 접근
+              거부까지 이어졌다. 3월 20일 금요일에는 실행 확인란을 누르지 않은
+              채 폴더를 제출했다. 사흘 뒤 사유는 실행 불가였다. 로그의 맨 아래는
+              모듈 './Input'을 찾지 못한다는 문장이었고, 내 파일 이름은
+              input.js였다. 그 위에는 런타임이 없다는 줄이 남아 있었다. 채점기
+              경로 한가운데에는 nabell이 적혀 있었다. 입과 전에 품었던 ‘곧 만들
+              수 있다’는 말은 그 메일에서 근거를 잃었고, 나는 긴 로그의 위쪽부터
+              읽으며 어디가 원인인지 고르지 못했다.
+              </p>
+            </article>
+            <article>
+              <h3 class="kicker">다시 일어선 날 · 2장</h3>
+              <p>
+              2026년 3월 24일 화요일 여덟 시 이십 분, 1강의실에서 반려 메일을
+              다시 열었다. 같은 강의실의 동료는 코드를 대신 고치지 않고, 맨
+              아래의 파일 이름만 짚어 주었다.
+              <span class="ability">[대인관계력]</span>
+              불러오는 줄의 './Input'을 input으로 바꿨다. 전날 밤 경로를 설명서와
+              한 칸씩 대조해 버전 v20이 이미 떠 있었으므로, 내 컴퓨터는 Hello,
+              nabell을 출력했다. 채점 로그의 맨 아래는 그대로였다. 강사는 로컬의
+              인사와 채점기의 확인을 서로 다른 절차로 나누고, 그날 안에
+              재제출하라고 했다. 한 칸 위의 경고는 변수 name에 값을 넣었으나
+              쓰지 않았다는 문장이었다. 화면에 찍힌 인사는 그 변수가 아니라
+              Hello, nabell이라는 글자였다. 나는 그 줄만 지우고 실행 확인란을
+              누른 뒤 다시 올렸다.
+              <span class="ability">[자기동기력]</span>
+              3월 27일까지 답은 오지 않았고, 기다리는 동안 새 코드를 넣지
+              않았다. 4월 2일 목요일 아침, 서면역으로 가는 버스에서 통과 메일을
+              받았다. 로그의 끝에는 Hello, nabell이 인용되어 있었다.
+              </p>
+            </article>
+            <article>
+              <h3 class="kicker">지금의 기준 · 3장</h3>
+              <p>
+              2026년 4월 20일 월요일, 통과 다음 실습의 결과는 팀 저장소의 이력
+              한 줄이었다. 4월 2일 오후 강사가 연 원격 저장소에는 동료의 입장
+              화면 첫 배치가 하나 있었다. 4월 중순까지 밤 수정이 쌓였고, 4월
+              19일 일요일 밤 전포동 책상에서 밀어 넣기는 non-fast-forward로
+              거절됐다. 나는 그 문장을 읽지 않은 채 강제 반영을 실행했다. 성공
+              표시 뒤에, 동료가 밤에 맞춰 둔 화면이 공유 이력에서 사라졌다.
+              강사는 복구를 대신하지 않았다. 로컬에 남은 기록과 원격의 현재를
+              한 이력으로 되돌리기 전에는 팀 과제를 열지 않는다고 했고, 기한은
+              4월 24일 금요일이었다. 저녁 서면역 2번 출구에서 검색창을 열었다가
+              명령을 더 따라 치기 전에 닫았다.
+              <span class="ability">[자기조절력]</span>
+              3월의 나는 빨간 문장을 노트에 베끼는 데 머물렀다. 지금 내가 일로
+              삼는 기준은 세 가지다. 맨 아래 문장을 이유로 읽는다. 거절되면
+              멈춘다. 내 컴퓨터에서 열린 결과와, 공유 기록의 안전은 따로
+              확인한다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="record" aria-labelledby="record-title">
+          <header class="section-head">
+            <p class="section-index">02</p>
+            <h2 id="record-title">13주 기록</h2>
+            <p class="section-copy">
+              13주의 기준은 입과일 2026년 3월 2일부터 2026년 5월 31일까지다.
+              이 구간의 수는 제출 현황에서, 그 뒤의 수는 리추얼 기록에서 가져왔다.
+            </p>
+          </header>
+          <!-- PORTFOLIO_STATS_START -->
+          <div class="metrics">
+            <article class="metric">
+              <strong>10일</strong>
+              <span>반려에서 통과까지</span>
+              <small>출처: 제출 현황. <span class="date">2026.03.23</span> 실행 불가 반려, <span class="date">03.24</span> 재제출, <span class="date">04.02</span> 통과.</small>
+            </article>
+            <article class="metric">
+              <strong>44일</strong>
+              <span>리추얼을 남긴 날</span>
+              <small>출처: 리추얼 기록 발췌. 13주가 끝난 뒤인 <span class="date">2026.08.11</span>부터 <span class="date">2026.10.30</span>까지.</small>
+            </article>
+            <article class="metric">
+              <strong>6일</strong>
+              <span>몸이 무거워도 자리를 지킨 날</span>
+              <small>출처: 리추얼 기록. 13주 이후 <span class="date">08.18</span>, <span class="date">08.20</span>, <span class="date">08.26</span>, <span class="date">08.27</span>, <span class="date">09.01</span>, <span class="date">09.30</span>.</small>
+            </article>
+          </div>
+          <p class="bridge">
+            10일은 3월 23일 서면역에서 반려 메일을 펼친 장면에서 시작한다.
+            로그를 위부터 읽다 파일 이름 앞에서 멈춘 그 아침이 입과 이후 첫
+            고난이고, 4월 2일 버스에서 받은 통과가 그 열흘의 끝이다. 같은 13주
+            안에는 4월 20일 팀 과제 정지가 한 번 더 있다. 되돌리기 전 기한은
+            4월 24일이었다.
+          </p>
+          <!-- PORTFOLIO_STATS_END -->
+        </section>
+
+        <section class="section" id="work" aria-labelledby="work-title">
+          <header class="section-head">
+            <p class="section-index">03</p>
+            <h2 id="work-title">대표작</h2>
+            <p class="section-copy">
+              10번 논문은 결과가 가설과 달라도 표본의 수를 그대로 적었다.
+              13번 앱 자리는 예정일만 남겨 두었다.
+            </p>
+          </header>
+          <div class="works">
+            <article class="work">
+              <p class="work-kicker">10번 논문 · 2026년 11월 5일</p>
+              <h3>
+                Cursor Composer의 XSS 방어 지시가 초기 생성 코드의 취약점 건수에
+                미치는 영향
+              </h3>
+              <p class="result">
+                바닐라 JavaScript 댓글 게시판 20개를 미적용 10회와 적용 10회로
+                나누어, 이스케이프 없는 HTML 삽입을 1, 텍스트 표시를 0으로
+                채점했다. 두 집단 모두 취약 0건, 안전 10건이라 이 표본은 보안
+                문장이 취약 건수를 줄인다는 가설을 뒷받침하지 않는다.
+              </p>
+              <div class="scores">
+                <div>
+                  <b>0 / 10</b>
+                  <span>미적용, 취약 건수. 출처: experiment_raw_data.csv</span>
+                </div>
+                <div>
+                  <b>0 / 10</b>
+                  <span>적용, 취약 건수. 출처: 과제 10 제출 논문</span>
+                </div>
+              </div>
+            </article>
+            <article class="work slot" aria-label="13번 앱 예정 자리">
+              <p class="work-kicker">13번 앱</p>
+              <h3>13번 앱 예정일: O월 O일</h3>
+              <p>이 자리는 비워 두었다. 앱 이름과 설명은 예정일이 정해진 뒤에 넣는다.</p>
+            </article>
+          </div>
+        </section>
+
+        <footer>
+          <p>박현우 · nabell · 소개는 2026년 4월 20일 장면까지, 대표작은 2026년 11월 5일 논문까지.</p>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
